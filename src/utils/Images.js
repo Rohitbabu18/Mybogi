@@ -1,0 +1,23 @@
+const CustomImage = {
+    back: require("../../assets/back.png"),
+    location: require("../../assets/location.png"),
+    home: require("../../assets/home.png"),
+    MyTeam: require("../../assets/MyTeam.png"),
+    Categories: require("../../assets/Categories.png"),
+    LocalVendor: require("../../assets/LocalVendor.png"),
+    MyOffer: require("../../assets/MyOffer.png"),
+    product: require("../../assets/product.png"),
+    delete: require("../../assets/delete.png"),
+    card: require("../../assets/card.png"),
+    truck: require("../../assets/truck.png"),
+    refund: require("../../assets/refund.png"),
+    priority: require("../../assets/priority.png"),
+    exclusive: require("../../assets/exclusive.png"),
+    fashion: require("../../assets/fashion.png"),
+    grocery: require("../../assets/grocery.png"),
+    note: require("../../assets/note.png"),
+    MBOffer: require("../../assets/MBOffer.jpeg"),
+    MBOffer2: require("../../assets/MBOffer2.jpeg"),
+    MBOffer3: require("../../assets/MBOffer3.jpeg"),
+}
+export default CustomImage;

@@ -1,0 +1,15 @@
+export const AppColor = {
+  white: '#fff',
+  whitelight: "#f1f1f1",
+  black: '#000',
+  primary: '#FF4001',
+  secondary: '#d4d4d4',
+  blue: '#3CC1fa',
+  grey: '#d4d4d4',
+  darkgrey: '#808080',
+  red: '#ff0000',
+  green: '#50B924',
+  pink: '#EB1165',
+  flat: '#E1EbEA',
+  transparent: "transparent",
+};
