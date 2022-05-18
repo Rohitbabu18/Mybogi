@@ -4,7 +4,6 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
-  Text,
   TouchableOpacity,
   View,
   FlatList,
@@ -21,8 +20,9 @@ import GloableStyle from '../GloableStyle';
 import SmallBox from '../../utils/SmallBox';
 import FlatBox from '../../utils/FlatBox';
 import StarRating from 'react-native-star-rating';
-import { horizScale, vertScale } from '../../utils/Layout';
+import { BoldText, horizScale, vertScale, Text } from '../../utils/Layout';
 import CustomImage from '../../utils/Images';
+import Font from '../../utils/Fonts';
 const Home = ({ navigation }) => {
   const [categories, setCategories] = useState([
     {
@@ -235,66 +235,55 @@ const Home = ({ navigation }) => {
           setVisible(!visible)
         }}>
         <View style={{
-          flexDirection: 'row',
-          alignItems: "center",
-          justifyContent: 'space-between'
-        }}>
-          <Image
-            source={{
-              uri: 'https://cdn-icons-png.flaticon.com/128/535/535285.png',
-            }}
-            style={{
-              ...styles.icon, marginLeft: 10, width: 20,
-              height: 20,
-            }}
-          />
-          <View
-            style={styles.teambymsg}>
-            <Text
-              style={{
-                fontSize: 12,
-                color: AppColor.black,
-                fontFamily: 'SourceSansPro-Bold'
-              }}>
-              Team buy to save 50%
-            </Text>
-          </View>
+          flexDirection: 'row', justifyContent: 'space-between',
+          marginTop: vertScale(10),
 
-        </View>
-        <Image
-          source={{
-            uri: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRUVFhUYGBgYGhYYGBgcHBwcHBoVGBwZGhoeGBgdIS4lHCArIRoZJjgnKy8xQzU1HCQ7Tjs1Py40NTEBDAwMEA8QHxISHz0rJCs2PzQ0NDY0NDQ0NDQ0PzQ0NDQ0NTY0NDQ1NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0Nv/AABEIAOEA4QMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABAUBAwcCBv/EAEMQAAEDAgMDBgoJAgYDAAAAAAEAAhEDIQQSMQVBURMiMmFxkQYVUnOBkqGx0fAjM0JTgrLB4fEUJDRDYqLC0hZjcv/EABoBAQACAwEAAAAAAAAAAAAAAAABBAIDBQb/xAAvEQACAQIEBAUEAQUAAAAAAAAAAQIDERITIVEEMTJxBRUzQZFhgdHhIhQjscHw/9oADAMBAAIRAxEAPwDsyIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIDC8ucAvSi4ms0dIgAak2Helxa5sFZZqVYE6qI/ENGrgF5fimFph09l/coxLcmz2JlCvm6lsc6FU4CuA7KTE3ANj3FWFeo0CS4ADedPSVOhB75UfJXtrwVXPrM8sLzSxTJ6Q700GparKjNxDPKb3rYKjfKHeEBtWJWk4hnlt7wtT8Qzy296AkuqALS7EgfyorsUzy2d6jOrsmc7e9NAWzKk7vavT3wFCoYllue3iLi44pXx1O3PYewg/qlybM3nEdQWs4w8B7VEq46m2zngG1j16d61vxLRBMwdLa9nH0JdEWZcMqTHzuK2KFh6wIAGsi3v9inIAiIgCIiAIiIAiIgCIiAwqnbFVjS0VHBtOoHMcSY50SIPYHdytlVeEOzjXovY2A+zmE6B7TI7J0ngSsZK6MouzKrZp+mDagJJbna0c5oDnCHEng30a2lWm16LQGuAAdMWtIg68f3VHsqs1zWseyoxzJAgO5hab3zEg6yBIIuLGFLrudmu7P1mXdwaCY7lpk0laxtUW5XNeOxLmkMOYB0NaAIJcRBEnUy73HcVOYxzWOcW8/QAakTocpg6m3UqutTY5wc9ocHHnuLXiBBiS50BswD8lecYwsBLQ0MBGgv+OLgz87hClpoZOOtmTaWJY5rnvaCwTBiZdMQ0G5Nx86ZwWKNRxlrgDGUAkwI1dBAvuy9c2EqibihOV7wxs84QQ2A6CS+BA1vbVWGz8dUa0Pc/Pla7MDIOYtOVvbIGm4TdZLVkNWRdPw7iDDXgwTOYai4FyddNN6iBzwTmpsHOgixIB00HzulbKW2Hc0uykZg05Zk9cXjjruPXEIVHPdaA/p5tSAZAAM2jM619RwUtpIxipM2U8Y81CwM4EgtILWkiHGTB10HBeqjGOJDnFztcvOiRbWIAmBwuox2e4VATVqZ3tIY+YGZtyx0QYi4AI6LuChYh+V4Jc85QWloHRLbhlyS4AifSCFGjMtUzazFNJIDWGHBkWu4yBlIddtrkwLhScThW5CTlzBoJaHCRIggwbhaHklhiZcMwcCGMgg3cZBIMkxBkHu0YQBtRwLiGOY1xI5xyh2VrQQOc4uy9EamBqo0MtdyE6m14boIHNAEW7Oq+m6FswzgywAglggi9yBBvczuFrDgSo9d+RzwQWiTANnATYHvI/F1ysNebDSbgiBxuDBDQJMG+oiSUuiVFl0cE0ua8gA6ZYlrjGhZedysP6SpOZz3i8xmA3cGkcdOr0qDRr8i3M9kHLlYzg1v2Znhc/so1PEZ8zqklwe9pbvJOfKAM3ONgBA8nW5U6Iw1fItNlUQ7FOcA4NpMi5mX1COdINzlbHYAvp1U+D+zzRpkuAD3uzuA3WAa30NAHerdbYqyNMndhERZGIREQBERAEREAREQBYWUQHO+WqNxOJcwzmqOnNDpe0BjYBjLDWgQInKO02lLHP5wc1rh9k2F5JvGgiBMzO7Umpc4/1GI86/8AMrBp3/oqEptNl1WstD017nRnzGwOUZW87gSNW7o61oFN5huYwC4tLnEljSLsGUaGBebXjct4cVgOKjGxoRTTeSSWCDeMwItuI32nSNwm0rP9KAQQ12oHSa0CmQAWv6URFss9+kkuTMVKqSIcUyGMM+Q7KJnnc4nQyC0W4admiktDhAaxjAek7VwdYWdMwQZ5sQWRBBXvMmbs+fSozJE4UaHCoWN3OD3RzrtaQRIIPS9wMLBFVzi58EvjN0QGhrnRpd0DLrvA4KQHIHFMxiy2IDcG8GA60awDDtQ3KSJiOy5tqtVPZ9QTDybWmIzEyRBnmgjXW6tC4pKY5ArcThKr3Zoa45WySRd0R+gWTgH3GUXcPtCCGjm83eN9zusN6snOKZrKMbtYm+tyHWwrnOM5i1oLWEOg5QXEEi0E80d+5QMThGMcxzWvDmvY9pzA85uUjXdmJ9IvaFcueVVY+pz6Y4vpjve0KcbYOlLKwsroFEIiIAiIgCIiAIiIAiIgCIiA5rVI/qsT513DgFZMIjT2tVVXcf6vE3/zHe4K0puMa+xc6XUy7HpRpqY6kwkEuBEjozpwIF/1gxK8+MaPFw0+yd4tqP43wvj/AAlaDXdMG7u/m69fZbTrUXZmyzWcQAAGhsuIsHOIYxv4nEDsngpULnXh4fTdJVJysj7o7So8Xceg6Y00y69Wqx4zo8Tw6J36boj2LnfJASC2CJBEXBFiD1pkbwCYUb/KYbnRPGVHi7TyHTGmmWfRrv0TxlR4nuOvbHtXO8jeAWOTbwCYUPKIbs6N4yo8Xbj0HaTrGWfR7IusDaVHifVO70X6uO6Vzrk28As5G8AmFDyiO7OiHaVHi71Xb/R/CHadHi71Tu9Hdx3Sudcm3gFnI3gEwoeUR3Z0XxlR4u3atI103ae7fCyzaNIkAF0ni0/qPnVc45NvAKZshgFZlgNPzsjS/wC8bkwoxqeFxhByu9Doj4jT2tVNjyOUo+dpDUeW1XFWb3VFjSeVo3/zaP52rBcziPkdUWVhZXTKIREQBERAEREAREQBERAEREBzHEz/AFeJ8473BWlI2/c9SrMU3+7xHnHbuoKzpNt+x965s+pl5dKPivCb68/i947h1dZ4qZgaNMYdrTUe1zi6s8sBF6YBpNc4tO+CANCXGdFC8JB9Ofx7o3t7+34KtFR3lO7ytsXY9LTourw8Ve3v/wB/ksvCFrOV5RhkVBmNiDm0cS3KMrjZxA0cXKrQuJ1JPCf0RG7lylDBBQvewa0kgASSYAGpJ0V3h/B92XNUcQNOaJAIvBcbTG5efBrD5nucBJaAGiJu6Zt2D2r7TFsYKNVozBtXKQ1zS0tcOBNiOwyBxVOrUldqOiXNnP47jJ05YKa1PinbHD7UydMwLh0ibZZGkQTv1Kqq1JzXFrhDhqPnULpexwwNNMSDDgXhpc4g65Q0GOsneYXy3hZgw3K8AgNIbLhBLSDcjdzhbtSlVlpd3T+V3NPh/F1XLLrO7ep80iIrZ2gpmyPrmRwP5m/Mb7hQ1L2SPpmfCftM1HD3a7kNPEenLsdCrTf9+KocYDytDztH87VeVm2PwKosU36ah56ju/1tWqPM8g+R1VZWFldMohERAEREAREQBERAEREAREQHM8Wf7vEWB+kPuHWrKkRGg7PkquxTf7vE+cPuarOkN36rnS6mXV0o+H8JD9Ofx24GW/pCradMktAEucQ1o4kmAFZ+Ewiufxf8dOA/dVJErNHrOF9BW2LrG4Gm5gbh30qj6bg3mF2aqx2VrnvzACRUNoJAa4cJWzE4agchpGnWFJ7GubTJz1aLsjS5xIEu5SQMs82oBulUDmgi4BHAq2OwXOLBnZDiQM3NBhrnc1pMu6MaDUW1Wy9/YrzoyppYqj93+blg/AtyvdVaKTQ2rE4anSdalUeHMio4vylotLblt1u2RgsO6nSMB8u5znta10csxpluZ1spjXQ9apfEDg3NzGnK15Dm5QMxjLnNi5pF22heW7GLou27ssuEC1TkumbEzJy6xffCX+hXyVhf934RODqBpU3QxzajjTfUbRFE0MzSGlwDzJzFjgdMrXCZJA20MFSoANr8jnBDXh5cZc7IXtYWgnmUog6Z6w8mFEobIrQ7LUY0OaA4ZvKklpFxLSBJ+zIMhaGbHcHuZLRla1xcNCXSQ1oMFzjDiBvjrCfYyyY6pVNOf1/RKwWDp0nPdVdSc1pa2lnJy1Wuyuc9oYCbUnAi1nPHBbH7PeymBSosr/S1BynJCrNLLSdRMwYBDie2RuUJuyZzlj2uLXPYQW5czmxZriblxcIHbwVWaLTctae0BL29jeqEqrup35XVtP8AXcm7TY1tao1kBrXAAA5g05Wlwa7eGuLm/hXvZH1zPn7TI9se5QgFN2QPpmfP2md/Z2rBlmrFxoOLd7LmdArHWyosUfpqHnqP52q+qtsfiqLFt+moeeo/nYtUeZ5J8jqaysLK6RRCIiAIiIAiIgCIiAIiIAiIgOa4n/F4nzh3dTVZ0iYHw/ZVeM/xeI84fcFY0QYXOl1MurpR8V4TfXn8XZMt/bu6lVK08JB9Ofx/8e7s+Kq1mj1vB+jHsFjKOCyiFkwGjgmUcFlokgC5NgN5PUpeHwLnjmgvO5rJcTutlDiQDYuiOvWJNVSrTpq8nYh5RwCxlHAKfidnlkyHMgZueC215ILgCQI1AIuLiVCc0gwRBG5BTrU6nS7mMo4LKIoNoUvZH1zPn7TPmd0TuURTNkfXM/j7bNDx9+iGniPTl2OhVjY/BUeKP01Dz1Hd/rYrmsDdUeJB5ah56j+dq1x5nkHyOqLKwsrpFEIiIAiIgCIiAIiIAiIgCIiA5ni3f3eIv/mHjwCsqJt/KrcX/i8T5w+4Kxo6b/mFzZv+TL0elHxfhKPpz+L3jd+qqlaeEn17vxd8t9unsVWti5HrOD9CPYIiIWTVXLoDGWdUc2mDwz2P6DscV2LY+EoYWhyVPK0NbcyA5zo6TjvJK47iA6A9l3U3NqAcQy5/Q9gK+6rYKpjabauFxDMjoLmvAflcQczHNcCGkE93aso29zznjDljWxf4vkquGZSqNa9r3BhaSJEk85u8OAEjsXKuTLH1KDjJovcwO4sk5fd/u6l9dh9hVsODWxWMY2jTOctY1rZcNAAwAOJ0A1MwvkBUc91Su4Qazy9oOobJy+89yNJJJO5j4S5uq3bQ9IiLE9KFM2P9cz5+03Ubx86qGpeyfrmfP2mfrHsQ08R6Uux0Cs6x/dUeJd9NQ89R4+W1XtYa6qjxP11DX66j+dq1R5o8g+R1NZWFldMohERAEREAREQBERAEREAREQHM8X/i8T/9u9wVjR0+epV+Lb/dYi3+Y7ceAVjRaI0HcfgubPqZdXSj4rwm+vP494Pk8NOz4qqVp4SD6c/i6t4v19vwVWti5HreD9CPYIi2UcO53RaXdnG59NgT2CULLaSuzW1xBBFiLgjUEcFJwWK5PMWAscZOZhLDJjc0iRzdJjWAF5bg6hAIpuLTMOAsYzTB39F3d2LFTB1GglzHAASeoHL0o06TTfcZ0U2ZXqRo1P4ys/ubsdjRV6YdUO41HF8AOJEAkxqAYInKOuYbnEmTcn+FuGEqEAhhIIaRpcO6J136DibC6NwdRznNDSXNgOFhlLtJJMCdyak0o0aSajZfc0otlTDPaAXNhpgB0ggkgkXBO4Fa1BuUlLVMKXsj65nxg9JmhPydN6iKXsn65n8/abu3/pruQ1cR6Uux0KsbG6o8T9dQ87R/O1XVZov8CqTEtHLUfPUuPltWqPM8g+R1NZWFldMohERAEREAREQBERAEREAREQHM8Uf7nEH/ANjvZbirKibfrf4qvqj+5xI/9rvaQf1VpSboudLqZdj0o+X2xsHE1qpeylmBzGczRMkCTLpm3uUI+C2N+4/30/8AsvvcNmbJaxzgAJDW5XGS4gkkgEC8m+o3lbcRtDJlmm8lzssWNyLZSBckE2ETHWt8YaXLsPFKtNKEUtO/5Oe/+LYzTkb8M9P/ALLbT8Gse0ENpFsxMPp7vxWX3mJqG/RGUTkhpdl6y7QKPg8W5/Rc4ABrp5uUNd0bECCeB+EsKNnmtZrVL4f5PjDsLaLQSWvaLknlWASTmJ6VpN1h2xtoOlpDjOo5WnzrRzgHc7m2vuV9jajy57CSSXy7/VG7s0Mde6VJwONe7mZn3BGs2gbiLajsU4THzKpfpXx+z5lmwNogACm6GwAOUp2A0HS3ajhqseI8eDZrhoPraYmBABGa8aL7HCvc1uUFr3ScxyucA4bgWwGxaROqxisVUp882aYaGkHmk7wZM6EelMKHmdXZfH7PjH+DuOAh1MhosAajI1mzc0StH/j2J+6/3t/7L61ldxc4h4L5OWTIyiZzOMDceyFPw+MLnFji20y+zWiADxvJD72iBxkw4GcfFquy+P2fCjwbxUTyQjzlL/spWzvB3FMqNc6lDRec7COa5rtzp3d8bl9hRDDVc0Pa4ENjKMwc4SSBeO2L9y3Y3Zjm5XOc0mMpa1pINiS4NveZHYmDS5jPxWpJODtr9H+SLVcb/EqkxRPK0fO0uPltV/UaI9CpMa36Sl52l+dqrrmUPY6csrCyukUQiIgCIiAIiIAiIgCIiAwiKv2zjuQo1KtiWt5oO955rB6XEBQ3ZXJSufG4qjGLxABB+ka614LmsdB67qcbX/QKHgKXJszvcC90ucSRLnuJJJtvK11MUOI+fQufJ3k2XEtLEtu1cssmBljVxI5wNt4kSLdfBear2OaC97hHPFIFzIANw1oi4mx7OKrTUbMyJBkX33WsPZpIi4id3pWxVVZIYUTcZiWtf03PAAvmkZXXDgIM7yZ3yd94uOxlMtkPFuiAXQS0yLGA2YFoOmuhHgvZe+/ifevOZnV3/PoTNRkopHvaeKbnLm3D2mLyXOBMk25szMcIPUNeGxTM4Be1vA313wI1iQCbdy9l7Dv9p3rGdmk7iNTpM/PBM0WibsLtBhe0OIykENYDOXogQABzTCn4qvSLHCAJAiOAEnt09irhiR5Xt424LyazSILp0GvDS+5M0hRiecJjWcoDmaWgk5jOUjIRFuNxKn0Nr0g5z3UeZfKSDZpvMEZSTYkk8VA5RnEd8rJqMO/hv4dcKc5bDCi8qbboBrnDOC/KYjLMGLOFgdfeq6hinVaznZ5ADwSXOaLyAwTcGJMDt3qKKjeI3g7wZ6oXsYhu8z6fRpCOqrWIwK9y6Jkfwq2sya1BpMTWpXOlnAxPExA4mF7o4wT0lvxuHZUYedYzv0Pd/C0p63JZ92FlVPg7jTVoNLjL2yx//wBNtJ7RDvxK1XRTurlJqzsZREUkBERAEREAREQBERAeHOhfI+FONDqjWE5adPnvMxmfBDGjjAknrLeC+vIWt1Bp1aD2gFYTi2rXMotJ3OTbR8IGk9Ow0E6BVdTbrPL9q7Z/SM8hvqheHYGkdabPVHwWrIW5uz1scOdt9nl/7l48fM8sesu4nZtH7pnqj4LHimh9yz1Qn9Otyc9bHDjt9nljvWD4QM8sd67j4oofcs9UJ4oofcs9UJkIZ62OHePmeWO9PH7PLHeu5eKaH3TPVCeKqH3TPVCnIQz1scNO32eX7V58fs8r2ruviuh90z1R8E8W0fumeqPgoyEM9bHCxt9vl+1ext1vl+1dy8W0fumeqE8W0fumeqFOQhnrY4eNuN8v2rY3bbfL9q7Z4uo/ds9ULPi+l92z1QoyFuRnrY4u3bTfL9qssD4TNabvBB1GYLq/9BS+7Z6oT+gpfdM9UfBMhbjPWx8bsLarQ9zmODmVIzCZLXt0McCLT/pC+tw+KLlvZg6Y0Y0djQFsDQNwW2EXFWua5SUvYBxXsJCyszWEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQH//Z',
-          }}
-          style={{
-            height: 120,
-            width: 120,
-            alignSelf: 'center',
-          }}
-        />
-        <Text
-          style={styles.productname}>
-          Amul Taaza toned milk {'\n'}200 ml - pack of 5 (Team)
-        </Text>
-        <View style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between'
         }}>
-          <Text
-            style={styles.buynowmsg}>
-            Buy now @ {'\n'} ₹ 70
-          </Text>
-          <View
-            style={styles.teambymsg}>
-            <Text
-              style={{
-                fontSize: 12,
-                color: AppColor.black,
-                fontFamily: "SourceSansPro-Bold",
-              }}>
-              Team buy@ {'\n'} ₹ 64
-            </Text>
+          <View style={{
+            backgroundColor: AppColor.yellow, flex: 0.6,
+            borderTopRightRadius: horizScale(20),
+            borderBottomRightRadius: horizScale(20),
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
+            <Text style={{ color: AppColor.black, fontSize: Font.small }}>Team By 12% Off</Text>
+          </View>
+          <View style={{ flex: 0.2 }}>
+            <Image source={CustomImage.heart} style={{ ...styles.icon, tintColor: AppColor.darkgrey }} />
           </View>
         </View>
+        <View style={{ marginTop: vertScale(10) }}>
+          <Image source={{ uri: "https://m.media-amazon.com/images/I/611WqJFZa3L._SL1000_.jpg" }}
+            style={styles.img} />
+        </View>
+        <View style={{ marginHorizontal: horizScale(10), marginTop: vertScale(5) }}>
+          <Text style={{ color: AppColor.black }}>Cadbury Chocolate Gems - 10.68 gm Pack</Text>
+        </View>
+        <View style={{
+          flexDirection: 'row', justifyContent: 'space-between',
+          marginTop: vertScale(5), alignItems: 'center'
+        }}>
+          <View style={{
+            marginHorizontal: horizScale(10), backgroundColor: AppColor.blue,
+            borderRadius: horizScale(8), paddingHorizontal: horizScale(10), height: vertScale(40), justifyContent: 'center'
+          }}>
+            <BoldText style={{ color: AppColor.white, fontSize: Font.tiny, textAlign: 'center' }}>Currant Price{"\n"}₹ 23</BoldText>
+          </View>
+          <View style={{ marginHorizontal: horizScale(10), marginTop: vertScale(5) }}>
+            <BoldText style={{ color: AppColor.darkgrey, textDecorationLine: 'line-through', textAlign: 'right', marginRight: horizScale(5) }}>₹ 30</BoldText>
+            <View style={{
+              borderWidth: 1, borderColor: AppColor.darkgrey,
+              paddingVertical: vertScale(2),
+              paddingHorizontal: horizScale(10),
+              borderRadius: horizScale(5)
+            }}>
+              <Text style={{ fontSize: Font.tiny, textAlign: 'center' }}>
+                Add to{'\n'}Card
+              </Text>
+            </View>
+          </View>
+        </View>
+
       </TouchableOpacity>
     );
   };
@@ -377,7 +366,7 @@ const Home = ({ navigation }) => {
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => { alert("Coming Soon") }}
+              onPress={() => { navigation.navigate("Notification") }}
               style={{ flex: 0.2 }}>
               <Image
                 source={require('../../../assets/bell.png')}
@@ -464,8 +453,8 @@ const Home = ({ navigation }) => {
               data={banner}
               onSnapToItem={(index) => setActiveBanner(index)}
               renderItem={renderBanner}
-              sliderWidth={380}
-              itemWidth={380}
+              sliderWidth={horizScale(436)}
+              itemWidth={horizScale(436)}
               loop={true}
               autoplay={true}
               autoplayDelay={1000}
@@ -499,27 +488,7 @@ const Home = ({ navigation }) => {
             />
           </View>
 
-          <TouchableOpacity
-            activeOpacity={0.8}
-            style={styles.exclusivedeal}>
-            <Text
-              style={styles.exclusivedealtext}>
-              Exclusive deal
-            </Text>
-          </TouchableOpacity>
 
-          <View
-            style={{
-              marginVertical: 10,
-            }}>
-            <FlatList
-              data={data}
-              numColumns={2}
-              keyExtractor={item => item.id}
-              renderItem={renderProductItem}
-              nestedScrollEnabled={true}
-            />
-          </View>
 
           <View
             style={GloableStyle.setView}>
@@ -530,7 +499,7 @@ const Home = ({ navigation }) => {
             }}>Shop By Categories</Text>
             <TouchableOpacity
               onPress={() => {
-                alert("Coming Soon")
+                navigation.navigate("ViewAll", { data: categorieData })
               }}>
               <Text style={{
                 fontSize: 14, color: 'gray',
@@ -636,7 +605,7 @@ const Home = ({ navigation }) => {
               }}>Trending Near You</Text>
               <TouchableOpacity
                 onPress={() => {
-                  alert("Coming Soon")
+                  navigation.navigate("ViewAll", { data: Trending })
                 }}>
                 <Text style={{
                   fontSize: 14, color: 'gray',
@@ -708,6 +677,28 @@ const Home = ({ navigation }) => {
                 margin: 0,
 
               }}
+            />
+          </View>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            style={styles.exclusivedeal}>
+            <Text
+              style={styles.exclusivedealtext}>
+              Exclusive deal
+            </Text>
+          </TouchableOpacity>
+
+          <View
+            style={{
+              marginVertical: 10,
+              alignItems: 'center'
+            }}>
+            <FlatList
+              data={data}
+              numColumns={2}
+              keyExtractor={item => item.id}
+              renderItem={renderProductItem}
+              nestedScrollEnabled={true}
             />
           </View>
         </View>

@@ -13,7 +13,7 @@ import GloableStyle from '../GloableStyle';
 import { horizScale, Text, vertScale } from "../../utils/Layout"
 import CustomImage from '../../utils/Images';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-function LocalVendor() {
+function LocalVendor({ navigation }) {
   const [data, setData] = useState([
     {
       uri: 'https://s3-ap-southeast-1.amazonaws.com/assets.limetray.com/assets/user_images/content_images/original/three3.jpg',
@@ -140,7 +140,9 @@ function LocalVendor() {
             style={{ ...styles.icon, tintColor: AppColor.pink }}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={{ flex: 0.2 }}>
+        <TouchableOpacity
+          onPress={() => { navigation.navigate("Notification") }}
+          style={{ flex: 0.2 }}>
           <Image
             source={require('../../../assets/bell.png')}
             style={{ ...styles.icon, tintColor: AppColor.pink }}
@@ -152,8 +154,8 @@ function LocalVendor() {
           data={slider}
           onSnapToItem={(index) => setActiveSlider(index)}
           renderItem={renderBanner}
-          sliderWidth={380}
-          itemWidth={380}
+          sliderWidth={horizScale(436)}
+          itemWidth={horizScale(436)}
           loop={true}
           autoplay={true}
           autoplayDelay={1000}

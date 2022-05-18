@@ -9,6 +9,7 @@ const Font = {
     regular: 16,
     medium: 14,
     small: 12,
+    das: 10,
     tiny: 8.5,
     pis: 6,
 }

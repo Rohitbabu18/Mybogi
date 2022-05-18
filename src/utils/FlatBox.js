@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 import Carousel from 'react-native-snap-carousel';
 import styles from '../screens/LocalVendor/style';
+import { horizScale } from './Layout';
 const FlatBox = () => {
   const [banner, setBanner] = useState([{
     uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8WpsqMWua68qDJ8-Gms-42Le_BjqgfbxMHA&usqp=CAU',
@@ -42,8 +43,8 @@ const FlatBox = () => {
         data={banner}
         onSnapToItem={(index) => setActiveBanner(index)}
         renderItem={renderBanner}
-        sliderWidth={380}
-        itemWidth={380}
+        sliderWidth={horizScale(436)}
+        itemWidth={horizScale(436)}
         loop={true}
         autoplay={true}
         autoplayDelay={1000}

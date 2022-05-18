@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">My_Bogi</string>
+<string name="facebook_app_id">694765618310658</string>
+<string name="fb_login_protocol_scheme">fb694765618310658</string>
+<string name="facebook_client_token">76e83c5fc93692f085a8a95f5445257a</string>
 </resources>

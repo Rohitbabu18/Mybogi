@@ -60,7 +60,7 @@ export default function MyCard({ navigation }) {
         <SafeAreaView style={GloableStyle.container}>
             <TouchableOpacity
                 onPress={() => {
-                    alert("Coming Soon")
+                    navigation.goBack()
                 }}
                 style={{
                     ...GloableStyle.headingView,

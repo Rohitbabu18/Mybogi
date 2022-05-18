@@ -1,7 +1,7 @@
 import React from 'react';
-import {LogBox} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { LogBox } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './src/screens/Auth/Login';
 import Splash from './src/screens/Auth/Splash';
 import DrawerNav from './src/navigation/DrawerNav';
@@ -17,13 +17,13 @@ const Auth = () => {
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName="Splash">
+      initialRouteName="Login">
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen
         name="ExploreBhandaraStore"
         component={ExploreBhandaraStore}
       />
-      <Stack.Screen name="Splash" component={Splash} />
+
     </Stack.Navigator>
   );
 };
@@ -34,7 +34,9 @@ const App = () => {
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
-        }}>
+        }}
+        initialRouteName="Splash">
+        <Stack.Screen name="Splash" component={Splash} />
         <Stack.Screen name="Auth" component={Auth} />
         <Stack.Screen name="Drawer" component={DrawerNav} />
       </Stack.Navigator>

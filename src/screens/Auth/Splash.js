@@ -18,7 +18,7 @@ const Splash = ({ navigation }) => {
   useEffect(() => {
     // loadFonts()
     setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.navigate('Auth');
     }, 3000);
   }, []);
 

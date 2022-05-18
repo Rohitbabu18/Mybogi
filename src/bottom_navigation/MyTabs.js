@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, Text } from 'react-native';
+import { View, TouchableOpacity, Image, Text, SafeAreaView } from 'react-native';
 import { AppColor } from '../utils/AppColor';
+import Font from '../utils/Fonts';
+import { horizScale, vertScale } from '../utils/Layout';
 
 export default function MyTabBar({ state, descriptors, navigation }) {
     return (
@@ -37,35 +39,35 @@ export default function MyTabBar({ state, descriptors, navigation }) {
                 };
 
                 return (
-                    <>
-                        <TouchableOpacity
-                            accessibilityRole="button"
-                            accessibilityState={isFocused ? { selected: true } : {}}
-                            accessibilityLabel={options.tabBarAccessibilityLabel}
-                            testID={options.tabBarTestID}
-                            onPress={onPress}
-                            onLongPress={onLongPress}
-                            style={{
-                                flex: 1, alignItems: 'center',
-                                paddingVertical: 7, backgroundColor: AppColor.transparent,
-                                margin: 0, borderTopWidth: 0
-                            }}
-                        >
-                            <Image source={icon} style={{
-                                height: 25,
-                                width: 25,
-                                resizeMode: 'contain',
-                                tintColor: isFocused ? AppColor.pink : AppColor.black
-                            }} />
-                            <Text style={{
-                                color: isFocused ? AppColor.pink : AppColor.black,
-                                fontSize: 12
-                            }}>
-                                {label}
-                            </Text>
-                        </TouchableOpacity>
+                    <TouchableOpacity
+                        accessibilityRole="button"
+                        accessibilityState={isFocused ? { selected: true } : {}}
+                        accessibilityLabel={options.tabBarAccessibilityLabel}
+                        testID={options.tabBarTestID}
+                        onPress={onPress}
+                        onLongPress={onLongPress}
+                        style={{
+                            flex: 1, alignItems: 'center',
+                            paddingVertical: vertScale(8),
+                            backgroundColor: AppColor.transparent,
+                            margin: 0, borderTopWidth: 0,
+                        }}
+                    >
+                        <Image source={icon} style={{
+                            height: horizScale(25),
+                            width: horizScale(25),
+                            resizeMode: 'contain',
+                            tintColor: isFocused ? AppColor.pink : AppColor.darkgrey
+                        }} />
+                        <Text style={{
+                            color: isFocused ? AppColor.pink : AppColor.darkgrey,
+                            marginTop: vertScale(2),
+                            fontSize: Font.small
+                        }}>
+                            {label}
+                        </Text>
+                    </TouchableOpacity>
 
-                    </>
                 );
             })}
         </View>

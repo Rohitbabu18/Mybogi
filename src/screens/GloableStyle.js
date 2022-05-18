@@ -1,11 +1,22 @@
 import { StyleSheet } from "react-native"
 import { AppColor } from "../utils/AppColor";
 import Font from "../utils/Fonts";
-import { horizScale } from "../utils/Layout";
+import { horizScale, vertScale } from "../utils/Layout";
 const GloableStyle = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: AppColor.whitelight
+    },
+    backView: {
+        flexDirection: 'row',
+        marginLeft: horizScale(20),
+        marginTop: vertScale(10),
+        alignItems: 'center',
+    },
+    backText: {
+        color: AppColor.darkgrey,
+        marginLeft: horizScale(10),
+        fontSize: Font.medium,
     },
     setView: {
         flexDirection: 'row',
@@ -44,6 +55,12 @@ const GloableStyle = StyleSheet.create({
         height: 90,
         width: 90,
         resizeMode: 'contain'
+    },
+    profileImg: {
+        height: horizScale(45),
+        width: horizScale(45),
+        borderRadius: horizScale(22.5),
+        resizeMode: "cover"
     }
 });
 export default GloableStyle

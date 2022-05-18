@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { AppColor } from "../../utils/AppColor";
-import { vertScale } from "../../utils/Layout";
+import { horizScale, vertScale } from "../../utils/Layout";
 const styles = StyleSheet.create({
   icon: {
     width: 25,
@@ -52,10 +52,12 @@ const styles = StyleSheet.create({
     fontFamily: 'SourceSansPro-Regular'
   },
   listproduct: {
-    height: 250,
-    width: '50%',
-    borderWidth: 0.5,
-    borderColor: AppColor.darkgrey,
+    width: '48.5%',
+    backgroundColor: AppColor.white,
+    elevation: horizScale(15),
+    margin: horizScale(3),
+    borderRadius: horizScale(8),
+    paddingVertical: vertScale(10)
   },
   teambymsg: {
     backgroundColor: AppColor.blue,
@@ -97,8 +99,8 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   bigIcon: {
-    width: 35,
-    height: 35,
+    width: horizScale(38),
+    height: horizScale(38),
     alignSelf: 'center',
   },
   shareview: {
@@ -132,10 +134,11 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   img: {
-    height: '75%',
-    width: '95%',
+    height: horizScale(130),
+    width: horizScale(130),
     alignSelf: 'center',
     resizeMode: 'contain',
+    marginVertical: horizScale(10),
   },
   text: {
     textAlign: 'center',
@@ -151,8 +154,8 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   flatlistcontainer: {
-    height: 150,
-    width: 150,
+    height: horizScale(190),
+    width: horizScale(170),
     borderColor: AppColor.blue,
     borderWidth: 1,
     alignSelf: 'center',
